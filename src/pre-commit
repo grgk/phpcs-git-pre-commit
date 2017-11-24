@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # regular expresion to filter files that will be checked
-# example: REG_EXP=" | grep -v '^database/\|app/Http/routes.php$' | grep \\.php$";
-REG_EXP=" | grep \\.php$";
+REG_EXP=" | grep -v '^database/\|app/Http/routes.php$' | grep \\.php$";
 
 PROJECT=`php -r "echo dirname(dirname(dirname(realpath('$0'))));"`
 STAGED_FILES_CMD="git diff --cached --name-only --diff-filter=ACMR HEAD"${REG_EXP}
